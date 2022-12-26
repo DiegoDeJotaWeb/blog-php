@@ -11,8 +11,8 @@
 
 <body>
     <?php
-    include './vendor/_header.php'; 
-    
+    include './vendor/_header.php';
+
     header('Content-Type: text/html; charset=utf-8');
     ?>
 
@@ -58,110 +58,134 @@
         <div class="container">
             <div class="row g-4">
                 <!-- Left big card -->
-                <div class="col-lg-6">
-                    <div class="card card-overlay-bottom card-grid-lg card-bg-scale" style="background-image:url(https://picsum.photos/400/200/?random); background-position: center left; background-size: cover;">
-                        <!-- Card featured -->
-                        <span class="card-featured" title="Featured post"><i class="fas fa-star"></i></span>
-                        <!-- Card Image overlay -->
-                        <div class="d-flex align-items-center p-3 p-sm-4">
-                            <div class="w-100 mt-auto">
-                                <!-- Card category -->
-                                <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
-                                <!-- Card title -->
-                                <h2 class="text-white h1"><a href="post-single-4.html" class="btn-link stretched-link text-reset">Ten tell-tale signs you need to get a new startup.</a></h2>
-                                <p class="text-white">No visited raising gravity outward subject my cottage Mr be. Hold do at tore in park feet near my case. </p>
-                                <!-- Card info -->
-                                <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                    <li class="nav-item">
-                                        <div class="nav-link">
-                                            <div class="d-flex align-items-center text-white position-relative">
-                                                <div class="avatar avatar-sm">
-                                                    <img class="avatar-img rounded-circle" src="https://api.lorem.space/image/album?w=40&h=40" alt="avatar">
+                <?php
+                $queryTodosPostInicial = $pdo->query("select * from post ORDER BY idPost desc limit  0, 1;");
+                while ($linhaTodosPostInicial = $queryTodosPostInicial->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+
+                    <div class="col-lg-6">
+                        <div class="card card-overlay-bottom card-grid-lg card-bg-scale" style="background-image:url(https://picsum.photos/400/200/?random); background-position: center left; background-size: cover;">
+                            <!-- Card featured -->
+                            <span class="card-featured" title="Featured post"><i class="fas fa-star"></i></span>
+                            <!-- Card Image overlay -->
+                            <div class="d-flex align-items-center p-3 p-sm-4">
+                                <div class="w-100 mt-auto">
+                                    <!-- Card category -->
+                                    <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
+                                    <!-- Card title -->
+                                    <h2 class="text-white h1"><a href="post.php?idPost=<?php echo $linhaTodosPostInicial['idPost']; ?>" class="btn-link stretched-link text-reset"><?php echo $linhaTodosPostInicial['tituloPost']; ?></a></h2>
+                                    <p class="text-white"><?php echo substr($linhaTodosPostInicial['descricaoPost'], 0, 200); ?>... </p>
+                                    <!-- Card info -->
+                                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                <div class="d-flex align-items-center text-white position-relative">
+                                                    <div class="avatar avatar-sm">
+                                                        <img class="avatar-img rounded-circle" src="https://api.lorem.space/image/album?w=40&h=40" alt="avatar">
+                                                    </div>
+                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis</a></span>
                                                 </div>
-                                                <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis</a></span>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">Nov 15, 2022</li>
-                                    <li class="nav-item">5 min read</li>
-                                </ul>
+                                        </li>
+                                        <li class="nav-item">Nov 15, 2022</li>
+                                        <li class="nav-item">5 min read</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
                 <!-- Right small cards -->
                 <div class="col-lg-6">
                     <div class="row g-4">
                         <!-- Card item START -->
-                        <div class="col-12">
-                            <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url(https://picsum.photos/400/200/?random);  background-position: center left; background-size: cover;">
-                                <!-- Card Image -->
-                                <!-- Card Image overlay -->
-                                <div class="d-flex align-items-center p-3 p-sm-4">
-                                    <div class="w-100 mt-auto">
-                                        <!-- Card category -->
-                                        <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
-                                        <!-- Card title -->
-                                        <h4 class="text-white"><a href="post-single-4.html" class="btn-link stretched-link text-reset">Best Pinterest boards for learning about business</a></h4>
-                                        <!-- Card info -->
-                                        <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                            <li class="nav-item position-relative">
-                                                <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Bryan</a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item">Aug 18, 2022</li>
-                                        </ul>
+                        <?php
+                        $queryTodosPostSegundo = $pdo->query("select * from post ORDER BY idPost desc limit  1, 1;");
+                        while ($linhaTodosPostSegundo = $queryTodosPostSegundo->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+                            <div class="col-12">
+                                <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url(https://picsum.photos/400/200/?random);  background-position: center left; background-size: cover;">
+                                    <!-- Card Image -->
+                                    <!-- Card Image overlay -->
+                                    <div class="d-flex align-items-center p-3 p-sm-4">
+                                        <div class="w-100 mt-auto">
+                                            <!-- Card category -->
+                                            <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
+                                            <!-- Card title -->
+                                            <h4 class="text-white"><a href="post.php?idPost=<?php echo $linhaTodosPostSegundo['idPost']; ?>" class="btn-link stretched-link text-reset"><?php echo $linhaTodosPostSegundo['tituloPost']; ?></a></h4>
+                                            <!-- Card info -->
+                                            <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                <li class="nav-item position-relative">
+                                                    <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Bryan</a>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">Aug 18, 2022</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                         <!-- Card item END -->
                         <!-- Card item START -->
-                        <div class="col-md-6">
-                            <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url(https://picsum.photos/400/200/?random); background-position: center left; background-size: cover;">
-                                <!-- Card Image overlay -->
-                                <div class="d-flex align-items-center p-3 p-sm-4">
-                                    <div class="w-100 mt-auto">
-                                        <!-- Card category -->
-                                        <a href="#" class="badge text-bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Business</a>
-                                        <!-- Card title -->
-                                        <h4 class="text-white"><a href="post-single-4.html" class="btn-link stretched-link text-reset">Five intermediate guide to business</a></h4>
-                                        <!-- Card info -->
-                                        <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                            <li class="nav-item position-relative">
-                                                <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Joan</a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item">Jun 03, 2022</li>
-                                        </ul>
+
+                        <?php
+                        $queryTodosPostTerceiro = $pdo->query("select * from post ORDER BY idPost desc limit  2, 1;");
+                        while ($linhaTodosPostTerceiro = $queryTodosPostTerceiro->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+                            <div class="col-md-6">
+                                <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url(https://picsum.photos/400/200/?random); background-position: center left; background-size: cover;">
+                                    <!-- Card Image overlay -->
+                                    <div class="d-flex align-items-center p-3 p-sm-4">
+                                        <div class="w-100 mt-auto">
+                                            <!-- Card category -->
+                                            <a href="#" class="badge text-bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Business</a>
+                                            <!-- Card title -->
+                                            <h4 class="text-white"><a href="post.php?idPost=<?php echo $linhaTodosPostTerceiro['idPost']; ?>" class="btn-link stretched-link text-reset"><?php echo $linhaTodosPostTerceiro['tituloPost']; ?></a></h4>
+                                            <!-- Card info -->
+                                            <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                <li class="nav-item position-relative">
+                                                    <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Joan</a>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">Jun 03, 2022</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                         <!-- Card item END -->
                         <!-- Card item START -->
-                        <div class="col-md-6">
-                            <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url(https://picsum.photos/400/200/?random);  background-position: center left; background-size: cover;">
-                                <!-- Card Image overlay -->
-                                <div class="d-flex align-items-center p-3 p-sm-4">
-                                    <div class="w-100 mt-auto">
-                                        <!-- Card category -->
-                                        <a href="#" class="badge text-bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Sports</a>
-                                        <!-- Card title -->
-                                        <h4 class="text-white"><a href="post-single-4.html" class="btn-link stretched-link text-reset">15 reasons to choose startup</a></h4>
-                                        <!-- Card info -->
-                                        <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                            <li class="nav-item position-relative">
-                                                <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Amanda</a>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item">Jan 28, 2022</li>
-                                        </ul>
+                        <?php
+                        $queryTodosPostQuarto = $pdo->query("select * from post ORDER BY idPost desc limit  3, 1;");
+                        while ($linhaTodosPostQuarto = $queryTodosPostQuarto->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+                            <div class="col-md-6">
+                                <div class="card card-overlay-bottom card-grid-sm card-bg-scale" style="background-image:url(https://picsum.photos/400/200/?random);  background-position: center left; background-size: cover;">
+                                    <!-- Card Image overlay -->
+                                    <div class="d-flex align-items-center p-3 p-sm-4">
+                                        <div class="w-100 mt-auto">
+                                            <!-- Card category -->
+                                            <a href="#" class="badge text-bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Sports</a>
+                                            <!-- Card title -->
+                                            <h4 class="text-white"><a href="post.php?idPost=<?php echo $linhaTodosPostQuarto['idPost']; ?>" class="btn-link stretched-link text-reset"><?php echo $linhaTodosPostQuarto['tituloPost']; ?></a></h4>
+                                            <!-- Card info -->
+                                            <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                <li class="nav-item position-relative">
+                                                    <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Amanda</a>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">Jan 28, 2022</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                         <!-- Card item END -->
+
+
                     </div>
                 </div>
             </div>
@@ -184,62 +208,67 @@
                     <div class="row gy-4">
                         <!-- Card item START -->
                         <?php
-                            $queryTodosPost = $pdo->query("select * from post");
-                            while ($linhaTodosPost = $queryTodosPost->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
-                        <div class="col-sm-6">
-                           
-                               
+                        $queryTodosPost = $pdo->query("SELECT *
+                        FROM post
+                        INNER JOIN produtor
+                        INNER JOIN categoria
+                        ON post.produtorID=produtor.idProdutor and post.categoriaID=categoria.idCategoria
+                        ORDER BY idPost DESC LIMIT 4 ");
+                        while ($linhaTodosPost = $queryTodosPost->fetch(PDO::FETCH_ASSOC)) {
+                        ?>
+                            <div class="col-sm-6">
+
+
 
                                 <div class="card">
-                                <!-- Card img -->
-                                <div class="position-relative">
-                                    <img class="card-img" src="https://api.lorem.space/image/album?w=1000&h=750" alt="Card image">
-                                    <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-                                        <!-- Card overlay bottom -->
-                                        <div class="w-100 mt-auto">
-                                            <!-- Card category -->
-                                            <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Desenvolvimento web - PHP</a>
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="https://api.lorem.space/image/album?w=1000&h=750" alt="Card image">
+                                        <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                                            <!-- Card overlay bottom -->
+                                            <div class="w-100 mt-auto">
+                                                <!-- Card category -->
+                                                <a href="categoria.php?idCategoria=<?php echo $linhaTodosPost['categoriaID']; ?>" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i><?php echo $linhaTodosPost['nomeCategoria'];?> - PHP</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="card-body px-0 pt-3">
-                                    <!-- Sponsored Post -->
-                                    <a href="#!" class="mb-0 text-body small" tabindex="0" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="You're seeing this ad because your activity meets the intended audience of our site.">
-                                        <i class="bi bi-info-circle ps-1"></i> Sponsored
-                                    </a>
-                                    <h4 class="card-title mt-2"><a href="post-single.html" class="btn-link text-reset fw-bold"><?php echo $linhaTodosPost['tituloPost']; ?></a></h4>
-                                    <p class="card-text"><?php echo substr($linhaTodosPost['descricaoPost'], 0, 30); ?> ...</p>
-                                    <!-- Card info -->
-                                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-                                        <li class="nav-item">
-                                            <div class="nav-link">
-                                                <div class="d-flex align-items-center position-relative">
-                                                    <div class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle" src="https://api.lorem.space/image/album?w=50&h=50" alt="avatar">
+                                    <div class="card-body px-0 pt-3">
+                                        <!-- Sponsored Post -->
+                                        <a href="#!" class="mb-0 text-body small" tabindex="0" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="You're seeing this ad because your activity meets the intended audience of our site.">
+                                            <i class="bi bi-info-circle ps-1"></i> Sponsored
+                                        </a>
+                                        <h4 class="card-title mt-2"><a href="post.php?idPost=<?php echo $linhaTodosPost['idPost']; ?>" class="btn-link text-reset fw-bold"><?php echo $linhaTodosPost['tituloPost']; ?></a></h4>
+                                        <p class="card-text"><?php echo substr($linhaTodosPost['descricaoPost'], 0, 60); ?>...</p>
+                                        <!-- Card info -->
+                                        <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center position-relative">
+                                                        <div class="avatar avatar-xs">
+                                                            <img class="avatar-img rounded-circle" src="https://api.lorem.space/image/album?w=50&h=50" alt="avatar">
+                                                        </div>
+                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link"><?php echo $linhaTodosPost['nomeProdutor'];?></a></span>
+                                                        <span class="ms-3"> <?php echo date('d-m-Y', strtotime($linhaTodosPost['dataPost']));  ?></span>
                                                     </div>
-                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
-                                                    <span class="ms-3"> <?php echo date('d-m-Y',strtotime($linhaTodosPost['dataPost']));  ?></span>
                                                 </div>
-                                            </div>
-                                        </li>
-                                       
-                                    </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
                                 </div>
+
+
+
+
+
+
                             </div>
-                          
-
-
-
-
-                           
-                        </div>
                         <?php
-                            }
-                            ?>
+                        }
+                        ?>
                         <!-- Card item END -->
-                
-                     
+
+
                         <!-- Load more START -->
                         <div class="col-12 text-center mt-5">
                             <button type="button" class="btn btn-primary-soft">Load more post <i class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
@@ -279,41 +308,20 @@
 
                         <!-- Trending topics widget START -->
                         <div>
-                            <h4 class="mt-4 mb-3">Trending topics</h4>
+                            <h4 class="mt-4 mb-3">Categorias</h4>
                             <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(https://api.lorem.space/image/album?w=550&h=550); background-position: center left; background-size: cover;">
-                                <div class="p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Desenvolvimento web</a>
+
+                            <?php
+                            $queryCategoriaIndex = $pdo->query("select * from categoria");
+                            while ($linhaCategoriaIndex = $queryCategoriaIndex->fetch(PDO::FETCH_ASSOC)) {
+                            ?>
+                                <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded bg-dark-overlay-4 " style="background-image:url(https://api.lorem.space/image/album?w=550&h=550); background-position: center left; background-size: cover;">
+                                    <div class="p-3">
+                                        <a href="categoria.php?idCategoria=<?php echo $linhaCategoriaIndex['idCategoria']; ?>" class="stretched-link btn-link fw-bold text-white h5"><?php echo $linhaCategoriaIndex['nomeCategoria']; ?></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(https://api.lorem.space/image/album?w=550&h=550); background-position: center left; background-size: cover;">
-                                <div class="bg-dark-overlay-4 p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Designer</a>
-                                </div>
-                            </div>
-                            <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(https://api.lorem.space/image/album?w=550&h=550); background-position: center left; background-size: cover;">
-                                <div class="bg-dark-overlay-4 p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Marketing</a>
-                                </div>
-                            </div>
-                            <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(https://api.lorem.space/image/album?w=550&h=550); background-position: center left; background-size: cover;">
-                                <div class="bg-dark-overlay-4 p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Photography</a>
-                                </div>
-                            </div>
-                            <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(https://api.lorem.space/image/album?w=550&h=550); background-position: center left; background-size: cover;">
-                                <div class="bg-dark-overlay-4 p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Sports</a>
-                                </div>
-                            </div>
-                            <!-- View All Category button -->
-                            <div class="text-center mt-3">
-                                <a href="#" class="fw-bold text-body text-primary-hover"><u>View all categories</u></a>
-                            </div>
+                            <?php } ?>
+
                         </div>
                         <!-- Trending topics widget END -->
 
