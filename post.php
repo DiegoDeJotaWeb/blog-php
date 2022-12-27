@@ -29,13 +29,31 @@ include './vendor/_header.php';
  ?>
     <div class="container">
 
+    <img src="assets/img/3.jpg" alt="">
+
         <h1 class="text-center my-5"><?php echo $linha['tituloPost']; ?></h1>
         <p>Categoria: PHP</p>
-        <p>Data: 25/10/1991</p>
+        <p>Data: <?php echo date('d-m-Y', strtotime($linha['dataPost']));  ?></p>
 
         <img src="assets/img/<?php echo $linha['imgPost']; ?>" class="img-fluid" alt="">
 
         <p><?php echo $linha['descricaoPost']; ?></p>
+
+        <p><a href="<?php echo $linha['linkPost']; ?>">Clique aqui.</a></p>
+        <style>
+           iframe{
+            width: 60%;
+            
+           }
+
+           .video-post{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           }
+        </style>
+        <h2 class=" my-3">Temos video com mais detalhes</h2>
+        <div class="video-post my-3"><?php echo $linha['videoPost']; ?></div>
 
         <div class="bg-secondary text-white px-4 py-4">
 

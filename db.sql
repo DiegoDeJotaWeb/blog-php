@@ -7,8 +7,11 @@ create table post(
     tituloPost varchar(255),
     descricaoPost text,
     dataPost datetime,
+    videoPost varchar(255),
+linkPost varchar(255),
     imgPost varchar(255),
     categoriaID int,
+    subcategoriaID int,
     produtorID int
 );
 
@@ -44,11 +47,12 @@ select * from post;
 select * from post ORDER BY idPost DESC;
 select * from post ORDER BY idPost desc limit  0, 1;
 
-SELECT *
-FROM post
-INNER JOIN produtor
-INNER JOIN categoria
-ON post.produtorID=produtor.idProdutor=categoria.idCategoria where idPost = 2;
+-- SELECT *
+-- FROM post
+-- INNER JOIN produtor
+-- INNER JOIN categoria
+-- ON post.produtorID=produtor.idProdutor and post.categoriaID=categoria.idCategoria
+-- where idPost = 6;
 
 create table categoria(
 idCategoria int primary key auto_increment,

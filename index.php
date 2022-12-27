@@ -59,7 +59,11 @@
             <div class="row g-4">
                 <!-- Left big card -->
                 <?php
-                $queryTodosPostInicial = $pdo->query("select * from post ORDER BY idPost desc limit  0, 1;");
+                $queryTodosPostInicial = $pdo->query("SELECT *
+                FROM post
+                INNER JOIN produtor
+                INNER JOIN categoria
+                ON post.produtorID=produtor.idProdutor and post.categoriaID=categoria.idCategoria ORDER BY idPost desc limit  0, 1;");
                 while ($linhaTodosPostInicial = $queryTodosPostInicial->fetch(PDO::FETCH_ASSOC)) {
                 ?>
 
@@ -71,7 +75,7 @@
                             <div class="d-flex align-items-center p-3 p-sm-4">
                                 <div class="w-100 mt-auto">
                                     <!-- Card category -->
-                                    <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
+                                    <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i><?php echo $linhaTodosPostInicial['nomeCategoria']; ?></a>
                                     <!-- Card title -->
                                     <h2 class="text-white h1"><a href="post.php?idPost=<?php echo $linhaTodosPostInicial['idPost']; ?>" class="btn-link stretched-link text-reset"><?php echo $linhaTodosPostInicial['tituloPost']; ?></a></h2>
                                     <p class="text-white"><?php echo substr($linhaTodosPostInicial['descricaoPost'], 0, 200); ?>... </p>
@@ -83,12 +87,12 @@
                                                     <div class="avatar avatar-sm">
                                                         <img class="avatar-img rounded-circle" src="https://api.lorem.space/image/album?w=40&h=40" alt="avatar">
                                                     </div>
-                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis</a></span>
+                                                    <span class="ms-3">Por <a href="#" class="stretched-link text-reset btn-link"><?php echo $linhaTodosPostInicial['nomeProdutor'];?></a></span>
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="nav-item">Nov 15, 2022</li>
-                                        <li class="nav-item">5 min read</li>
+                                        <li class="nav-item"><?php echo date('d-m-Y', strtotime($linhaTodosPostInicial['dataPost']));  ?></li>
+                                     
                                     </ul>
                                 </div>
                             </div>
@@ -100,7 +104,11 @@
                     <div class="row g-4">
                         <!-- Card item START -->
                         <?php
-                        $queryTodosPostSegundo = $pdo->query("select * from post ORDER BY idPost desc limit  1, 1;");
+                        $queryTodosPostSegundo = $pdo->query("SELECT *
+                        FROM post
+                        INNER JOIN produtor
+                        INNER JOIN categoria
+                        ON post.produtorID=produtor.idProdutor and post.categoriaID=categoria.idCategoria ORDER BY idPost desc limit  1, 1;");
                         while ($linhaTodosPostSegundo = $queryTodosPostSegundo->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                             <div class="col-12">
@@ -110,16 +118,16 @@
                                     <div class="d-flex align-items-center p-3 p-sm-4">
                                         <div class="w-100 mt-auto">
                                             <!-- Card category -->
-                                            <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
+                                            <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i><?php echo $linhaTodosPostSegundo['nomeCategoria']; ?></a>
                                             <!-- Card title -->
                                             <h4 class="text-white"><a href="post.php?idPost=<?php echo $linhaTodosPostSegundo['idPost']; ?>" class="btn-link stretched-link text-reset"><?php echo $linhaTodosPostSegundo['tituloPost']; ?></a></h4>
                                             <!-- Card info -->
                                             <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
                                                 <li class="nav-item position-relative">
-                                                    <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Bryan</a>
+                                                    <div class="nav-link">Por <a href="#" class="stretched-link text-reset btn-link"><?php echo $linhaTodosPostSegundo['nomeProdutor'];?></a>
                                                     </div>
                                                 </li>
-                                                <li class="nav-item">Aug 18, 2022</li>
+                                                <li class="nav-item"><?php echo date('d-m-Y', strtotime($linhaTodosPostSegundo['dataPost']));  ?></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -130,7 +138,11 @@
                         <!-- Card item START -->
 
                         <?php
-                        $queryTodosPostTerceiro = $pdo->query("select * from post ORDER BY idPost desc limit  2, 1;");
+                        $queryTodosPostTerceiro = $pdo->query("SELECT *
+                        FROM post
+                        INNER JOIN produtor
+                        INNER JOIN categoria
+                        ON post.produtorID=produtor.idProdutor and post.categoriaID=categoria.idCategoria ORDER BY idPost desc limit  2, 1;");
                         while ($linhaTodosPostTerceiro = $queryTodosPostTerceiro->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                             <div class="col-md-6">
@@ -139,16 +151,16 @@
                                     <div class="d-flex align-items-center p-3 p-sm-4">
                                         <div class="w-100 mt-auto">
                                             <!-- Card category -->
-                                            <a href="#" class="badge text-bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Business</a>
+                                            <a href="#" class="badge text-bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i><?php echo $linhaTodosPostTerceiro['nomeCategoria']; ?></a>
                                             <!-- Card title -->
                                             <h4 class="text-white"><a href="post.php?idPost=<?php echo $linhaTodosPostTerceiro['idPost']; ?>" class="btn-link stretched-link text-reset"><?php echo $linhaTodosPostTerceiro['tituloPost']; ?></a></h4>
                                             <!-- Card info -->
                                             <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
                                                 <li class="nav-item position-relative">
-                                                    <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Joan</a>
+                                                    <div class="nav-link">Por <a href="#" class="stretched-link text-reset btn-link"><?php echo $linhaTodosPostTerceiro['nomeProdutor'];?></a>
                                                     </div>
                                                 </li>
-                                                <li class="nav-item">Jun 03, 2022</li>
+                                                <li class="nav-item"><?php echo date('d-m-Y', strtotime($linhaTodosPostTerceiro['dataPost']));  ?></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -158,7 +170,11 @@
                         <!-- Card item END -->
                         <!-- Card item START -->
                         <?php
-                        $queryTodosPostQuarto = $pdo->query("select * from post ORDER BY idPost desc limit  3, 1;");
+                        $queryTodosPostQuarto = $pdo->query("SELECT *
+                        FROM post
+                        INNER JOIN produtor
+                        INNER JOIN categoria
+                        ON post.produtorID=produtor.idProdutor and post.categoriaID=categoria.idCategoria ORDER BY idPost desc limit  3, 1;");
                         while ($linhaTodosPostQuarto = $queryTodosPostQuarto->fetch(PDO::FETCH_ASSOC)) {
                         ?>
                             <div class="col-md-6">
@@ -167,16 +183,16 @@
                                     <div class="d-flex align-items-center p-3 p-sm-4">
                                         <div class="w-100 mt-auto">
                                             <!-- Card category -->
-                                            <a href="#" class="badge text-bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Sports</a>
+                                            <a href="#" class="badge text-bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i><?php echo $linhaTodosPostQuarto['nomeCategoria']; ?></a>
                                             <!-- Card title -->
                                             <h4 class="text-white"><a href="post.php?idPost=<?php echo $linhaTodosPostQuarto['idPost']; ?>" class="btn-link stretched-link text-reset"><?php echo $linhaTodosPostQuarto['tituloPost']; ?></a></h4>
                                             <!-- Card info -->
                                             <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
                                                 <li class="nav-item position-relative">
-                                                    <div class="nav-link">by <a href="#" class="stretched-link text-reset btn-link">Amanda</a>
+                                                    <div class="nav-link">Por <a href="#" class="stretched-link text-reset btn-link"><?php echo $linhaTodosPostQuarto['nomeProdutor'];?></a>
                                                     </div>
                                                 </li>
-                                                <li class="nav-item">Jan 28, 2022</li>
+                                                <li class="nav-item"><?php echo date('d-m-Y', strtotime($linhaTodosPostQuarto['dataPost']));  ?></li>
                                             </ul>
                                         </div>
                                     </div>
