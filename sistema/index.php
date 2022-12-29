@@ -10,9 +10,9 @@
 </head>
 
 <body>
-<?php
-        require_once "./vendor/_conexao.php";
-        $query = $pdo->query("select * from post");
+    <?php
+    require_once "./vendor/_conexao.php";
+    $query = $pdo->query("select * from post");
 
     include './vendor/_header.php'; ?>
     <div class="container-fluid">

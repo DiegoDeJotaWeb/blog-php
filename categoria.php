@@ -35,7 +35,15 @@
 
     $inicio = ($registro * $pag) - $registro;
 
-    $query = $pdo->query("select * from post where categoriaID = $idCategoria limit $inicio, $registro");
+    $query = $pdo->query("select * FROM post
+    INNER JOIN produtor
+    INNER JOIN categoria
+    ON post.produtorID=produtor.idProdutor and post.categoriaID=categoria.idCategoria
+    
+    
+    
+    
+    where categoriaID = $idCategoria limit $inicio, $registro");
 
     $anterior = $pag - 1;
     $proximo = $pag + 1;
@@ -113,8 +121,8 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><?php echo $linha['tituloPost'] ?></h5>
                                         <p class="card-text"><?php echo substr($linha['descricaoPost'], 0, 4) ?> ...</p>
-                                        <p>25/10/1991 <br> Diego <br> PHP</p>
-                                        <a href="post.php?idPost=<?php echo $linha['idPost'] ?>" class="btn btn-primary">Ler mains</a>
+                                        <p>25/10/1991 <br> <?php echo $linha['nomeProdutor'] ?> <br> PHP</p>
+                                        <a href="post.php?idPost=<?php echo $linha['idPost'] ?>&idCategoria=<?php echo $linha['idCategoria'] ?>" class="btn btn-primary">Ler mains</a>
                                     </div>
                                 </div>
                             </div>

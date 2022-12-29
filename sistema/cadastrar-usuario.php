@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Cadastro de categoria</h1>
+          <h1 class="h2">Cadastro de tema</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
               <nav aria-label="breadcrumb">
@@ -42,15 +42,29 @@
 
         <!-- <h2>Section title</h2> -->
         <div class="table-responsive">
-          <form action="vendor/functions/categoria/_categoria.php" method="POST">
+          <form action="vendor/functions/categoria/_subcategoria.php" method="POST">
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Categoria</label>
-              <input type="text" class="form-control" id="" name="categoria">
+              <label for="exampleInputEmail1" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="" name="nome">
             </div>
             <div class="mb-3">
-              <label for="exampleInputEmail1" class="form-label">Capa</label>
-              <input type="file" class="form-control" id="" name="capa">
+              <label for="exampleInputEmail1" class="form-label">Foto</label>
+              <input type="text" class="form-control" id="" name="foto">
             </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Tipo</label>
+              <select class="form-select" aria-label="Default select example" name="tipo">
+                <option value="" selected>Autor</option>
+                <option value="" >Administrador</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Descrição</label>
+              <textarea class="form-control" name="" id="" cols="30" rows="10" name="descricao"></textarea>
+            </div>
+
             <button type="submit" class="btn btn-primary">Cadastrar</button>
           </form>
         </div>
